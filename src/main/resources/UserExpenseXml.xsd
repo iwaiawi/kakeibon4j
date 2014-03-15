@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="AAS_RESPONSE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="result_user_expense_list"/>
+        <xs:element ref="RESPONSE_TIME"/>
+        <xs:element ref="RESPONSE_CD"/>
+        <xs:element ref="AAUID"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="result_user_expense_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="user_expenses"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user_expenses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="user_expense_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user_expense_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="expense_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expense_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="expense"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expense">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="code"/>
+        <xs:element ref="name"/>
+        <xs:element ref="balance_type"/>
+        <xs:element minOccurs="0" ref="detail_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="code" type="xs:NMTOKEN"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="balance_type" type="xs:string"/>
+  <xs:element name="detail_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="expense_detail"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expense_detail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="detail_code"/>
+        <xs:element ref="detail_name"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="detail_code" type="xs:NCName"/>
+  <xs:element name="detail_name" type="xs:string"/>
+  <xs:element name="RESPONSE_TIME" type="xs:string"/>
+  <xs:element name="RESPONSE_CD" type="xs:integer"/>
+  <xs:element name="AAUID" type="xs:string"/>
+</xs:schema>

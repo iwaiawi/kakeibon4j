@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="AAS_RESPONSE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SERVICE_LIST"/>
+        <xs:element ref="AA_INPUT_LIMIT_SOURCE"/>
+        <xs:element ref="AAS_AC_DATA"/>
+        <xs:element ref="AAS_UPDATE_DATALIST"/>
+        <xs:element ref="AA_USER_DATE"/>
+        <xs:element ref="AA_SCRAPING_STOP"/>
+        <xs:element ref="display_def"/>
+        <xs:element ref="global_expenses"/>
+        <xs:element ref="result_user_expense_list"/>
+        <xs:element ref="filter_result"/>
+        <xs:element ref="template_result"/>
+        <xs:element ref="result_assortment_rule_list"/>
+        <xs:element ref="result_sum_term"/>
+        <xs:element ref="budget_result"/>
+        <xs:element ref="RESPONSE_TIME"/>
+        <xs:element ref="RESPONSE_CD"/>
+        <xs:element ref="AAUID"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SERVICE_LIST">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="OEM_INDUSTRY"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OEM_INDUSTRY">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="CP_SITE"/>
+      </xs:sequence>
+      <xs:attribute name="gyoukai_id" use="required" type="xs:NCName"/>
+      <xs:attribute name="gyoukai_name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CP_SITE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TYPE_ID"/>
+        <xs:element ref="TANK_FLG"/>
+        <xs:element ref="AUTOUPDATE_FLG"/>
+        <xs:element ref="AUTOLOGIN_FLG"/>
+        <xs:element ref="POINT_FLG"/>
+        <xs:element ref="LARGE_LOGO"/>
+        <xs:element ref="MID_LOGO"/>
+        <xs:element ref="SMALL_LOGO"/>
+        <xs:element ref="LARGE_URL"/>
+        <xs:element ref="MID_URL"/>
+        <xs:element ref="SMALL_URL"/>
+        <xs:element ref="LARGE_LOGO_PREM_FLG"/>
+        <xs:element ref="MID_LOGO_PREM_FLG"/>
+        <xs:element ref="SMALL_LOGO_PREM_FLG"/>
+        <xs:element ref="NOTES100"/>
+        <xs:element ref="NOTES800"/>
+        <xs:element ref="SCRAPING_MSNG"/>
+        <xs:element ref="AUTOLOGIN_OK_URL"/>
+        <xs:element ref="AUTOLOGIN_NG_URL"/>
+        <xs:element ref="AUTOLOGIN_STOP_FLG"/>
+        <xs:element ref="ADDLOGIN_FLG"/>
+        <xs:element ref="ALLUPDATE_FLG"/>
+        <xs:element maxOccurs="unbounded" ref="LOGIN_INFO"/>
+        <xs:element ref="INTERVAL_UPDATE_TIME"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="IN_VALID_UPDATE_TERM"/>
+        <xs:element maxOccurs="unbounded" ref="COMMODITY"/>
+      </xs:sequence>
+      <xs:attribute name="cp_id" use="required" type="xs:NCName"/>
+      <xs:attribute name="cp_name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TYPE_ID" type="xs:integer"/>
+  <xs:element name="TANK_FLG" type="xs:integer"/>
+  <xs:element name="AUTOUPDATE_FLG" type="xs:integer"/>
+  <xs:element name="AUTOLOGIN_FLG" type="xs:integer"/>
+  <xs:element name="POINT_FLG" type="xs:integer"/>
+  <xs:element name="LARGE_LOGO" type="xs:string"/>
+  <xs:element name="MID_LOGO" type="xs:string"/>
+  <xs:element name="SMALL_LOGO" type="xs:string"/>
+  <xs:element name="LARGE_URL" type="xs:anyURI"/>
+  <xs:element name="MID_URL" type="xs:anyURI"/>
+  <xs:element name="SMALL_URL" type="xs:anyURI"/>
+  <xs:element name="LARGE_LOGO_PREM_FLG" type="xs:integer"/>
+  <xs:element name="MID_LOGO_PREM_FLG" type="xs:integer"/>
+  <xs:element name="SMALL_LOGO_PREM_FLG" type="xs:integer"/>
+  <xs:element name="NOTES100" type="xs:string"/>
+  <xs:element name="NOTES800" type="xs:string"/>
+  <xs:element name="SCRAPING_MSNG" type="xs:string"/>
+  <xs:element name="AUTOLOGIN_OK_URL" type="xs:anyURI"/>
+  <xs:element name="AUTOLOGIN_NG_URL" type="xs:anyURI"/>
+  <xs:element name="AUTOLOGIN_STOP_FLG" type="xs:integer"/>
+  <xs:element name="ADDLOGIN_FLG" type="xs:integer"/>
+  <xs:element name="ALLUPDATE_FLG" type="xs:integer"/>
+  <xs:element name="INTERVAL_UPDATE_TIME" type="xs:NMTOKEN"/>
+  <xs:element name="IN_VALID_UPDATE_TERM">
+    <xs:complexType>
+      <xs:attribute name="time" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COMMODITY">
+    <xs:complexType>
+      <xs:attribute name="syubetu_id" use="required" type="xs:NCName"/>
+      <xs:attribute name="syubetu_name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AA_INPUT_LIMIT_SOURCE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="FIX_SOURCE"/>
+        <xs:element ref="CHANGE_SOURCE"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FIX_SOURCE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="O_ALL_ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CHANGE_SOURCE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALL"/>
+        <xs:element ref="OPTIONINFORMATION13"/>
+        <xs:element ref="KAKEIBO_MEMO"/>
+        <xs:element ref="KAKEIBO_SHOP"/>
+        <xs:element ref="PHRASE_ANSWER3"/>
+        <xs:element ref="USERIDOUT"/>
+        <xs:element ref="SEXCD"/>
+        <xs:element ref="PHRASE_QUESTION2"/>
+        <xs:element ref="PHRASE_ANSWER2"/>
+        <xs:element ref="ACCOUNTNAME"/>
+        <xs:element ref="OPTIONINFORMATION12"/>
+        <xs:element ref="KAKEIBO_EXPENSE_NAME"/>
+        <xs:element ref="PHRASE_ANSWER1"/>
+        <xs:element ref="DEVICE_NAME"/>
+        <xs:element ref="MEMOINFO"/>
+        <xs:element ref="MAILADDRESS"/>
+        <xs:element ref="KAKEIBO_SETTLEMENT_WAY"/>
+        <xs:element ref="PLACECD"/>
+        <xs:element ref="PHRASE_QUESTION3"/>
+        <xs:element ref="PHRASE_QUESTION1"/>
+        <xs:element ref="EX_PROFILE_0"/>
+        <xs:element ref="KAKEIBO_ITEM"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ALL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OPTIONINFORMATION13">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KAKEIBO_MEMO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KAKEIBO_SHOP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHRASE_ANSWER3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="USERIDOUT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SEXCD">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHRASE_QUESTION2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHRASE_ANSWER2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ACCOUNTNAME">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OPTIONINFORMATION12">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KAKEIBO_EXPENSE_NAME">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHRASE_ANSWER1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DEVICE_NAME">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MEMOINFO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MAILADDRESS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="LOCALPART_MAX_LEN"/>
+        <xs:element ref="LOCALPART_MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LOCALPART_MAX_LEN" type="xs:integer"/>
+  <xs:element name="LOCALPART_MIN_LEN" type="xs:integer"/>
+  <xs:element name="KAKEIBO_SETTLEMENT_WAY">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PLACECD">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHRASE_QUESTION3">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHRASE_QUESTION1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="MIN_LEN"/>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EX_PROFILE_0">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KAKEIBO_ITEM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ALLOW_CHARACTER"/>
+        <xs:element ref="MAX_LEN"/>
+        <xs:element ref="MIN_LEN"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AAS_AC_DATA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="INDUSTRY"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="INDUSTRY">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="GYOUKAI_ID"/>
+        <xs:element maxOccurs="unbounded" ref="ACCOUNT"/>
+      </xs:sequence>
+      <xs:attribute name="gyoukai_id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GYOUKAI_ID" type="xs:NCName"/>
+  <xs:element name="AAS_UPDATE_DATALIST">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="AAS_DATA_UPDATE"/>
+        <xs:element minOccurs="0" ref="AAS_DATA_MEISAI"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AAS_DATA_UPDATE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ACCOUNT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AAS_DATA_MEISAI">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="ACCOUNT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AA_USER_DATE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="FIRST_NAME"/>
+        <xs:element ref="SECOND_NAME"/>
+        <xs:element ref="PLACE_CD"/>
+        <xs:element ref="PLASE_NAME"/>
+        <xs:element ref="SEX_CD"/>
+        <xs:element ref="SEX_NAME"/>
+        <xs:element ref="BIRTH_YEAR"/>
+        <xs:element ref="OPTION_INFOMATION2"/>
+        <xs:element ref="OPTION_INFOMATION3"/>
+        <xs:element ref="OPTION_INFOMATION4"/>
+        <xs:element ref="OPTION_INFOMATION5"/>
+        <xs:element ref="OPTION_INFOMATION6"/>
+        <xs:element ref="OPTION_INFOMATION8"/>
+        <xs:element ref="OPTION_INFOMATION12"/>
+        <xs:element ref="OPTION_INFOMATION13"/>
+        <xs:element ref="SYSTEM_FLG"/>
+        <xs:element ref="SYSTEM_FLG_SELECTED"/>
+        <xs:element ref="SEC_FLG"/>
+        <xs:element ref="SEC_FLG_SELECTED"/>
+        <xs:element ref="PRMAIL_FLG"/>
+        <xs:element ref="PRMAIL_FLG_SELECTED"/>
+        <xs:element ref="MAILL_ADDRESS"/>
+        <xs:element ref="CREATE_DT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FIRST_NAME" type="xs:string"/>
+  <xs:element name="SECOND_NAME" type="xs:string"/>
+  <xs:element name="PLACE_CD" type="xs:integer"/>
+  <xs:element name="PLASE_NAME" type="xs:NCName"/>
+  <xs:element name="SEX_CD" type="xs:integer"/>
+  <xs:element name="SEX_NAME" type="xs:NCName"/>
+  <xs:element name="BIRTH_YEAR" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION2" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION3" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION4" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION5" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION6" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION8" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION12" type="xs:integer"/>
+  <xs:element name="OPTION_INFOMATION13" type="xs:integer"/>
+  <xs:element name="SYSTEM_FLG" type="xs:integer"/>
+  <xs:element name="SYSTEM_FLG_SELECTED" type="xs:NCName"/>
+  <xs:element name="SEC_FLG" type="xs:integer"/>
+  <xs:element name="SEC_FLG_SELECTED" type="xs:NCName"/>
+  <xs:element name="PRMAIL_FLG" type="xs:integer"/>
+  <xs:element name="PRMAIL_FLG_SELECTED" type="xs:NCName"/>
+  <xs:element name="MAILL_ADDRESS" type="xs:string"/>
+  <xs:element name="CREATE_DT" type="xs:NMTOKEN"/>
+  <xs:element name="AA_SCRAPING_STOP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="CP"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="CP_ID"/>
+        <xs:element ref="SCRAPING_STOP_FLG"/>
+        <xs:element ref="SCRAPING_NON_FLG"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SCRAPING_STOP_FLG" type="xs:integer"/>
+  <xs:element name="SCRAPING_NON_FLG" type="xs:integer"/>
+  <xs:element name="display_def">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="category_def"/>
+        <xs:element ref="summary_disp_commodity"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="category_def">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="category"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="category">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="category_id"/>
+        <xs:element ref="category_name"/>
+        <xs:element maxOccurs="unbounded" ref="industry_id"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="category_id" type="xs:NCName"/>
+  <xs:element name="category_name" type="xs:NCName"/>
+  <xs:element name="industry_id" type="xs:NCName"/>
+  <xs:element name="summary_disp_commodity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="industry"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="industry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="commodity"/>
+      </xs:sequence>
+      <xs:attribute name="industry_id" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="commodity" type="xs:NCName"/>
+  <xs:element name="global_expenses" type="expense_list"/>
+  <xs:element name="result_user_expense_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="user_expenses"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user_expenses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="user_expense_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="user_expense_list" type="expense_list"/>
+  <xs:element name="filter_result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="filter_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filter_list">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="template_result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="template_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="template_list">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="result_assortment_rule_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="assortment_rule_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assortment_rule_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="assortment_rule"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assortment_rule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="rule_id"/>
+        <xs:element ref="item"/>
+        <xs:element ref="expense_code"/>
+        <xs:element ref="expense_name"/>
+        <xs:element ref="balace_type"/>
+        <xs:element ref="assort_dt"/>
+        <xs:element ref="expense_detail_code"/>
+        <xs:element ref="expense_detail_name"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rule_id" type="xs:integer"/>
+  <xs:element name="item" type="xs:string"/>
+  <xs:element name="expense_code" type="xs:NMTOKEN"/>
+  <xs:element name="expense_name" type="xs:string"/>
+  <xs:element name="balace_type">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="assort_dt" type="xs:string"/>
+  <xs:element name="expense_detail_code" type="xs:string"/>
+  <xs:element name="expense_detail_name" type="xs:string"/>
+  <xs:element name="result_sum_term">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="sum_term_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sum_term_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="sum_term"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sum_term">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="yearmonth"/>
+        <xs:element ref="termstart"/>
+        <xs:element ref="termend"/>
+      </xs:sequence>
+      <xs:attribute name="yearmonth" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="yearmonth" type="xs:integer"/>
+  <xs:element name="termstart" type="xs:integer"/>
+  <xs:element name="termend" type="xs:integer"/>
+  <xs:element name="budget_result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="budget_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="budget_list">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="RESPONSE_TIME" type="xs:string"/>
+  <xs:element name="RESPONSE_CD" type="xs:integer"/>
+  <xs:element name="AAUID" type="xs:string"/>
+  <xs:element name="LOGIN_INFO">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="FIELD_NAME"/>
+        <xs:choice>
+          <xs:element ref="FIELD_VALUE"/>
+          <xs:sequence>
+            <xs:element ref="FIELD_LABEL"/>
+            <xs:element ref="FIELD_MASK_AVAILABLE"/>
+            <xs:element ref="MAX_LEN"/>
+            <xs:element ref="MIN_LEN"/>
+            <xs:element ref="ARROW_STRING"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="login_info_no" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FIELD_NAME" type="xs:NCName"/>
+  <xs:element name="FIELD_VALUE" type="xs:string"/>
+  <xs:element name="FIELD_LABEL" type="xs:string"/>
+  <xs:element name="FIELD_MASK_AVAILABLE" type="xs:integer"/>
+  <xs:element name="ARROW_STRING" type="xs:string"/>
+  <xs:element name="O_ALL_ALLOW_CHARACTER">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="O_ALL_ALLOW_CHARACTER"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ALLOW_CHARACTER" type="xs:string"/>
+  <xs:element name="MAX_LEN" type="xs:string"/>
+  <xs:element name="MIN_LEN" type="xs:string"/>
+  <xs:element name="ACCOUNT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="CP_ID"/>
+          <xs:element ref="ACCOUNT_KEY"/>
+          <xs:element ref="UPDATE_DT"/>
+        </xs:choice>
+        <xs:choice minOccurs="0">
+          <xs:sequence>
+            <xs:element ref="SC_STAT"/>
+            <xs:element ref="SC_ERR_CD"/>
+            <xs:element minOccurs="0" ref="SC_ERR_MSG"/>
+            <xs:element minOccurs="0" ref="SC_ERR_MSG2"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:element ref="MEMO"/>
+            <xs:element ref="TANKING_CHECKED"/>
+            <xs:element ref="AUTO_LOGIN_CHECKED"/>
+            <xs:element ref="AUTO_UPDATA_CHECKED"/>
+            <xs:element ref="POINT_CHECKED"/>
+            <xs:element ref="LOGIN_INFO"/>
+          </xs:sequence>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="SHO_SYUBETU"/>
+      </xs:sequence>
+      <xs:attribute name="account_mng_key" type="xs:integer"/>
+      <xs:attribute name="key" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ACCOUNT_KEY" type="xs:integer"/>
+  <xs:element name="UPDATE_DT" type="xs:string"/>
+  <xs:element name="SC_STAT" type="xs:integer"/>
+  <xs:element name="SC_ERR_CD" type="xs:integer"/>
+  <xs:element name="SC_ERR_MSG" type="xs:string"/>
+  <xs:element name="SC_ERR_MSG2" type="xs:string"/>
+  <xs:element name="MEMO" type="xs:string"/>
+  <xs:element name="TANKING_CHECKED" type="xs:integer"/>
+  <xs:element name="AUTO_LOGIN_CHECKED" type="xs:integer"/>
+  <xs:element name="AUTO_UPDATA_CHECKED" type="xs:integer"/>
+  <xs:element name="POINT_CHECKED" type="xs:integer"/>
+  <xs:element name="SHO_SYUBETU">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="SHO_SYUBETU_ID"/>
+          <xs:element ref="TK_KEY"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="TANKING"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SHO_SYUBETU_ID">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:NCName">
+          <xs:attribute name="detail_disp_flg" type="xs:integer"/>
+          <xs:attribute name="tank_key" type="xs:integer"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TK_KEY" type="xs:integer"/>
+  <xs:element name="TANKING">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SHO_KEY"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="SHO_KEY_INDEX"/>
+          <xs:element ref="RIREKI_FLG"/>
+          <xs:element ref="ITEM_1"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="ITEM_2"/>
+        <xs:element minOccurs="0" ref="ITEM_3"/>
+        <xs:element minOccurs="0" ref="ITEM_4"/>
+        <xs:element minOccurs="0" ref="ITEM_5"/>
+        <xs:element minOccurs="0" ref="ITEM_6"/>
+        <xs:element minOccurs="0" ref="ITEM_7"/>
+        <xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" ref="TANKING_DETAIL"/>
+          <xs:sequence>
+            <xs:element ref="ITEM_8"/>
+            <xs:element ref="ITEM_9"/>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SHO_KEY" type="xs:string"/>
+  <xs:element name="SHO_KEY_INDEX" type="xs:integer"/>
+  <xs:element name="RIREKI_FLG" type="xs:integer"/>
+  <xs:element name="ITEM_1" type="xs:string"/>
+  <xs:element name="ITEM_2" type="xs:string"/>
+  <xs:element name="ITEM_3" type="xs:string"/>
+  <xs:element name="ITEM_4" type="xs:string"/>
+  <xs:element name="ITEM_5" type="xs:string"/>
+  <xs:element name="ITEM_6" type="xs:string"/>
+  <xs:element name="ITEM_7" type="xs:string"/>
+  <xs:element name="TANKING_DETAIL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SUFIX"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ITEM_1"/>
+          <xs:element ref="ITEM_2"/>
+          <xs:element ref="ITEM_3"/>
+          <xs:element ref="ITEM_4"/>
+          <xs:element ref="ITEM_5"/>
+          <xs:element ref="ITEM_6"/>
+        </xs:sequence>
+        <xs:element minOccurs="0" ref="ITEM_7"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="ITEM_8"/>
+          <xs:element ref="ITEM_10"/>
+          <xs:element ref="ITEM_11"/>
+          <xs:element ref="ITEM_12"/>
+          <xs:element ref="ITEM_13"/>
+          <xs:element ref="ITEM_14"/>
+          <xs:element ref="ITEM_15"/>
+          <xs:element ref="ITEM_16"/>
+          <xs:element ref="ITEM_17"/>
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SUFIX" type="xs:integer"/>
+  <xs:element name="ITEM_8" type="xs:string"/>
+  <xs:element name="ITEM_9" type="xs:string"/>
+  <xs:element name="ITEM_10" type="xs:string"/>
+  <xs:element name="ITEM_11" type="xs:string"/>
+  <xs:element name="ITEM_12" type="xs:string"/>
+  <xs:element name="ITEM_13" type="xs:string"/>
+  <xs:element name="ITEM_14" type="xs:string"/>
+  <xs:element name="ITEM_15" type="xs:string"/>
+  <xs:element name="ITEM_16" type="xs:string"/>
+  <xs:element name="ITEM_17" type="xs:string"/>
+  <xs:element name="CP_ID" type="xs:NCName"/>
+  <xs:complexType name="expense_list">
+    <xs:sequence>
+      <xs:element ref="expense_list"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="expense_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="expense"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expense">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="code"/>
+        <xs:element ref="name"/>
+        <xs:element ref="balance_type"/>
+        <xs:element minOccurs="0" ref="distribute_ratio"/>
+        <xs:element minOccurs="0" ref="detail_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="code" type="xs:NMTOKEN"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="balance_type" type="xs:string"/>
+  <xs:element name="distribute_ratio" type="xs:string"/>
+  <xs:element name="detail_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="expense_detail"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="expense_detail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="detail_code"/>
+        <xs:element ref="detail_name"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="detail_code" type="xs:NMTOKEN"/>
+  <xs:element name="detail_name" type="xs:string"/>
+</xs:schema>

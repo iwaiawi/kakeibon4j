@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="AAS_RESPONSE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="booking_result"/>
+        <xs:element ref="RESPONSE_TIME"/>
+        <xs:element ref="RESPONSE_CD"/>
+        <xs:element ref="AAUID"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="booking_result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="booking_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="booking_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="booking"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="booking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="booking_id"/>
+        <xs:element ref="date"/>
+        <xs:element ref="sum"/>
+        <xs:element ref="item"/>
+        <xs:element ref="expense_code"/>
+        <xs:element ref="expense_name"/>
+        <xs:element ref="balance_type"/>
+        <xs:element ref="shop"/>
+        <xs:element ref="cp_id"/>
+        <xs:element ref="cp_name"/>
+        <xs:element ref="settlement_way"/>
+        <xs:element ref="unit_price"/>
+        <xs:element ref="amount"/>
+        <xs:element ref="memo"/>
+        <xs:element ref="totaling_flg"/>
+        <xs:element ref="aggr_id"/>
+        <xs:element ref="dataType"/>
+        <xs:element ref="newFlg"/>
+        <xs:element ref="account_key"/>
+        <xs:element ref="tank_key"/>
+        <xs:element ref="sho_key"/>
+        <xs:element minOccurs="0" ref="option_data_1"/>
+        <xs:element minOccurs="0" ref="option_data_2"/>
+        <xs:element ref="sho_syubetu_id"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="expense_detail_code"/>
+          <xs:element ref="expense_detail_name"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="booking_id" type="xs:integer"/>
+  <xs:element name="date" type="xs:integer"/>
+  <xs:element name="sum" type="xs:integer"/>
+  <xs:element name="item" type="xs:string"/>
+  <xs:element name="expense_code" type="xs:string"/>
+  <xs:element name="expense_name" type="xs:string"/>
+  <xs:element name="balance_type" type="xs:string"/>
+  <xs:element name="shop" type="xs:string"/>
+  <xs:element name="cp_id" type="xs:string"/>
+  <xs:element name="cp_name" type="xs:string"/>
+  <xs:element name="settlement_way" type="xs:string"/>
+  <xs:element name="unit_price" type="xs:string"/>
+  <xs:element name="amount" type="xs:string"/>
+  <xs:element name="memo" type="xs:string"/>
+  <xs:element name="totaling_flg" type="xs:integer"/>
+  <xs:element name="aggr_id" type="xs:string"/>
+  <xs:element name="dataType" type="xs:integer"/>
+  <xs:element name="newFlg" type="xs:integer"/>
+  <xs:element name="account_key" type="xs:string"/>
+  <xs:element name="tank_key" type="xs:string"/>
+  <xs:element name="sho_key" type="xs:string"/>
+  <xs:element name="option_data_1" type="xs:integer"/>
+  <xs:element name="option_data_2" type="xs:integer"/>
+  <xs:element name="sho_syubetu_id" type="xs:string"/>
+  <xs:element name="expense_detail_code" type="xs:string"/>
+  <xs:element name="expense_detail_name" type="xs:string"/>
+  <xs:element name="RESPONSE_TIME" type="xs:string"/>
+  <xs:element name="RESPONSE_CD" type="xs:integer"/>
+  <xs:element name="AAUID" type="xs:string"/>
+</xs:schema>

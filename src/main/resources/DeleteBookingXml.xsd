@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="AAS_RESPONSE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="booking_result"/>
+        <xs:element ref="result_assortment_rule_list"/>
+        <xs:element ref="cash_result"/>
+        <xs:element ref="RESPONSE_TIME"/>
+        <xs:element ref="RESPONSE_CD"/>
+        <xs:element ref="AAUID"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="booking_result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="update_booking_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item" type="xs:string"/>
+  <xs:element name="expense_code" type="xs:string"/>
+  <xs:element name="expense_name" type="xs:string"/>
+  <xs:element name="expense_detail_code" type="xs:string"/>
+  <xs:element name="expense_detail_name" type="xs:string"/>
+  <xs:element name="update_booking_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="list" type="xs:string"/>
+  <xs:element name="result_assortment_rule_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="assortment_rule_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assortment_rule_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="assortment_rule"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="assortment_rule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="rule_id"/>
+        <xs:element ref="item"/>
+        <xs:element ref="expense_code"/>
+        <xs:element ref="expense_name"/>
+        <xs:element ref="balace_type"/>
+        <xs:element ref="assort_dt"/>
+        <xs:element ref="expense_detail_code"/>
+        <xs:element ref="expense_detail_name"/>
+      </xs:sequence>
+      <xs:attribute name="id" use="required" type="xs:integer"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rule_id" type="xs:integer"/>
+  <xs:element name="balace_type">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="assort_dt" type="xs:string"/>
+  <xs:element name="cash_result">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="cash_list"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cash_list">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="RESPONSE_TIME" type="xs:string"/>
+  <xs:element name="RESPONSE_CD" type="xs:integer"/>
+  <xs:element name="AAUID" type="xs:string"/>
+</xs:schema>
